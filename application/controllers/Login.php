@@ -8,23 +8,23 @@ class Login extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('pengerjaan_model');
+        $this->load->model('Login_model');
     }
 
     public function index()
     {
 		if($this->session->userdata('logined') && $this->session->userdata('logined') == true)
 		{
-			redirect('dashboard');
+			redirect('Home');
 		}
 		
 		if(!$this->input->post())
 		{
-			$this->load->view('login');
+			$this->load->view('Login');
 		}
 		else
 		{
-			$cek_login=$this->pengerjaan_model->cek_login(
+			$cek_login=$this->Login_model->cek_login(
 				$this->input->post('username'),
 				$this->input->post('password')
 				);
@@ -32,11 +32,11 @@ class Login extends CI_Controller
 			{
 				$this->session->set_userdata('logined', true);
 				$this->session->set_userdata('username', $cek_login->username);
-				redirect("dashboard");
+				redirect("Home");
 			}
 			else 
 			{
-				redirect("login");
+				redirect("Login");
 			}
 		}
         

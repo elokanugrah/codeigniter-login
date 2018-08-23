@@ -2,7 +2,7 @@
 	/**
 	* 
 	*/
-	class login_model extends CI_Model
+	class Login_model extends CI_Model
 	{
 		public $table_name	='account';
 
@@ -10,8 +10,9 @@
 		{
 			parent::__construct();
 		}
+		
 
-		//Fungsi untuk login
+		//Untuk login
 		function cek_login($user, $pass)
 		{
 			$this->db->where('username',$user);
@@ -19,4 +20,4 @@
 			return $this->db->get($this->table_name)->row();
 		}
 	}
- ?>
+	?>
